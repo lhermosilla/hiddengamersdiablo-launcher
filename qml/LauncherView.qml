@@ -21,7 +21,7 @@ Item {
         height: 63.9
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: 116
+        anchors.topMargin: 40
         Image { source: "assets/logo-text.png"; anchors.fill: parent; fillMode: Image.PreserveAspectFit; opacity: 1.0 }
     }
 

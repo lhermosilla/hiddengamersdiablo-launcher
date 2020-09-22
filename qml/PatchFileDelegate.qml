@@ -25,7 +25,7 @@ Item {
         TableCell {
             width: row.width * 0.20
             height: row.height
-            content: (model.localCRC.length > 0 ? localCRC : "not on disk")
+            content: (model.localCRC.length > 0 ? localCRC : "no en el disco")
         }
         TableCell {
             width: row.width * 0.20
@@ -38,7 +38,7 @@ Item {
             height: row.height
 
             Text {
-                color: (model.fileAction == "download" ? "#64d168" : "#fa5757")
+                color: (model.fileAction == "descarga" ? "#64d168" : "#fa5757")
                 font.pixelSize: 12
                 font.family: beaufortbold.name
                 text: model.fileAction
@@ -55,7 +55,7 @@ Item {
         
         var name = parts[parts.length - 1]
         if(name == "") {
-            name = "Unknown"
+            name = "Desconocido"
         }
 
         return name

@@ -30,7 +30,7 @@ Item {
                 width: 100
                 
                 MenuItem {
-                    text: "LAUNCH"
+                    text: "INICIAR"
                     active: (activeMenuItem == "launch")
 
                     onClicked: function() {
@@ -46,12 +46,12 @@ Item {
                 width: 100
                 
                 MenuItem {
-                    text: "LADDER"
-                    active: (activeMenuItem == "ladder")
+                    width: 100
+                    text: "COMUNIDAD"
+                    active: (activeMenuItem == "community")
 
                     onClicked: function() {
-                        activeMenuItem = "ladder"
-                        contentLoader.source = menuSources.ladder
+                        Qt.openUrlExternally("https://reddit.com/r/manaosdiablo/")
                     }
                 }
             }
@@ -59,28 +59,47 @@ Item {
             Item {
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 height: parent.height
-                width: 130
+                width: 100
                 
                 MenuItem {
-                    width: 110
-                    text: "COMMUNITY"
-                    active: (activeMenuItem == "community")
+                    text: "FACEBOOK"
+                    active: (activeMenuItem == "ladder")
 
                     onClicked: function() {
-                        Qt.openUrlExternally("https://old.reddit.com/r/slashdiablo/")
-                    }
-
-                    Image {
-                        id: linkoutIcon
-                        fillMode: Image.Pad
-                        anchors.top: parent.top
-                        anchors.right: parent.right
-                        width: 16
-                        height: 16
-                        source: "assets/icons/out.png"
-                        opacity: 0.2
+                        Qt.openUrlExternally("https://www.facebook.com/ManaosDiablo")
                     }
                 }
+            }
+
+            Item {
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                height: parent.height
+                width: 100
+                
+                MenuItem {
+                    text: "DISCORD"
+                    active: (activeMenuItem == "ladder")
+
+                    onClicked: function() {
+                        Qt.openUrlExternally("https://discord.com/invite/QVNnzDR")
+                    }
+                }
+            }
+
+            Item {
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                height: parent.height
+                width: 100
+                
+                MenuItem {
+                    text: "WHATSAPP"
+                    active: (activeMenuItem == "ladder")
+
+                    onClicked: function() {
+                        Qt.openUrlExternally("https://chat.whatsapp.com/BxzRkTOQQNA156Ft80tF9u")
+                    }
+                }
+                
             }
         }
     }

@@ -147,7 +147,7 @@ Item {
                     spacing: 5
 
                     Title {
-                        text: "SET DIABLO II DIRECTORY"
+                        text: "ESTABLECER CARPETA DE DIABLO II"
                         font.pixelSize: 13
                     }
                 }
@@ -171,7 +171,7 @@ Item {
 
                     SButton {
                         id: chooseD2Path
-                        label: "Open"
+                        label: "Abrir"
                         borderRadius: 0
                         borderColor: "#373737"
                         width: fileDialogBox.width * 0.20; height: 35
@@ -213,12 +213,12 @@ Item {
                         width: 225
                         
                         Title {
-                            text: "LAUNCH PARAMETERS"
+                            text: "PARAMETROS DE LANZAMIENTO"
                             font.pixelSize: 13
                         }
 
                         SText {
-                            text: "Set when the game launches"
+                            text: "Establecer cuando el juego inicie"
                             font.pixelSize: 11
                             topPadding: 5
                             color: "#676767"
@@ -299,12 +299,12 @@ Item {
                         width: (settingsLayout.width - instancesDropdown.width)
                         
                         Title {
-                            text: "INSTANCES TO LAUNCH"
+                            text: "INSTANCIAS A LANZAR"
                             font.pixelSize: 13
                         }
 
                         SText {
-                            text: "Number of this specific install that will launch when playing the game"
+                            text: "Número de veces que abrira el juego"
                             font.pixelSize: 11
                             topPadding: 5
                             color: "#676767"
@@ -316,7 +316,7 @@ Item {
                         Dropdown{
                             id: gameInstances
                             currentIndex: ((game != undefined && game.instances != undefined) ? (game.instances) : 0)
-                            model: [ 0, 1, 2, 3, 4 ]
+                            model: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
                             height: 30
                             width: 60
 
@@ -339,12 +339,12 @@ Item {
                     Column {
                         width: (settingsLayout.width - includeMaphack.width)
                         Title {
-                            text: "MAPHACK VERSION"
+                            text: "VERSION MAPHACK"
                             font.pixelSize: 13
                         }
 
                         SText {
-                            text: "Select if you want any maphack installed"
+                            text: "Seleccione si desea instalar cualquier maphack"
                             font.pixelSize: 11
                             topPadding: 5
                             color: "#676767"
@@ -380,12 +380,12 @@ Item {
                     Column {
                         width: (settingsLayout.width - includeHD.width)
                         Title {
-                            text: "HD MOD VERSION"
+                            text: "VERSION HD MOD"
                             font.pixelSize: 13
                         }
 
                         SText {
-                            text: "Select if you want any HD mod installed"
+                            text: "Seleccione si desea instalar algún mod HD"
                             font.pixelSize: 11
                             topPadding: 5
                             color: "#676767"
@@ -422,12 +422,12 @@ Item {
                     Column {
                         width: (settingsLayout.width - overrideMaphackCfg.width)
                         Title {
-                            text: "OVERRIDE MAPHACK CONFIG"
+                            text: "SOBREESCRIBIR CONFIG MAPHACK"
                             font.pixelSize: 13
                         }
 
                         SText {
-                            text: "Select if you want to provide your own custom BH.cfg"
+                            text: "Seleccione si desea utilizar su propio BH.cfg personalizado"
                             font.pixelSize: 11
                             topPadding: 5
                             color: "#676767"
@@ -458,12 +458,12 @@ Item {
                     Column {
                         width: (settingsLayout.width - depFixButton.width)
                         Title {
-                            text: "DISABLE DEP"
+                            text: "DESHABILITAR DEP"
                             font.pixelSize: 13
                         }
 
                         SText {
-                            text: "Run if this install gets Access Violation (C0000005) error - requires reboot"
+                            text: "Ejecutar si obtiene Access Violation (C0000005) - requiere reiniciar"
                             font.pixelSize: 11
                             topPadding: 5
                             color: "#676767"
@@ -476,7 +476,7 @@ Item {
                         PlainButton {
                             width: 100
                             height: 40
-                            label: "Run"
+                            label: "Ejecutar"
 
                             onClicked: {
                                 var success = diablo.applyDEP(d2pathInput.text)
@@ -505,7 +505,7 @@ Item {
                     border.color: "#000000"
 
                     SText {
-                        text: "DEP fix successfully applied - don't forget to reboot!"
+                        text: "La corrección DEP se aplicó correctamente, ¡no olvide reiniciar!"
                         font.pixelSize: 11
                         anchors.centerIn: parent
                         color: "#ffffff"
@@ -522,7 +522,7 @@ Item {
                     border.color: "#000000"
 
                     SText {
-                        text: "There was an error while applying DEP, please try again!"
+                        text: "Se produjo un error al aplicar DEP, ¡inténtelo de nuevo!"
                         font.pixelSize: 11
                         anchors.centerIn: parent
                         color: "#ffffff"

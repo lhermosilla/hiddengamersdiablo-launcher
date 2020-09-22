@@ -49,7 +49,7 @@ Item {
 
             // HD circle.
             Item { 
-                visible: (model.hd_version != "none")
+                visible: (model.hd_version != "ninguno")
                 width: 25
                 height: 25
                 
@@ -63,7 +63,7 @@ Item {
 
             // Maphack circle.
             Item {
-                visible: (model.maphack_version != "none")
+                visible: (model.maphack_version != "ninguno")
                 width: 25
                 height: 25
                 
@@ -128,7 +128,7 @@ Item {
         
         var name = parts[parts.length - 1]
         if(name == "") {
-            name = "New game"
+            name = "Nuevo juego"
         }
 
         return name

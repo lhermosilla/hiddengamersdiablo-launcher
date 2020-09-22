@@ -51,7 +51,7 @@ Rectangle {
                         anchors.bottom: parent.bottom
                         font.pixelSize: 16
                         color: "#736c6a"
-                        text: "CONNECTING TO SLASHDIABLO API..."
+                        text: "CONECTANDO A MANAOS DIABLO..."
                     }
                 }
 
@@ -82,7 +82,7 @@ Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         font.pixelSize: 14
                         color: "#736c6a"
-                        text: "Something went wrong when connecting to the Slashdiablo API"
+                        text: "Un error ocurrio al intentar conectar a ManaosDiablo"
                     }
                 }
 
@@ -95,7 +95,7 @@ Rectangle {
                         height: 50
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
-                        label: "TRY AGAIN"
+                        label: "INTENTE NUEVAMENTE"
 
                         onClicked: settings.getPrerequisites()
                     }

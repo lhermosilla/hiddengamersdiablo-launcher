@@ -39,7 +39,7 @@ Popup {
             anchors.bottomMargin: 20
             
             Title {
-                text: "PATCH ACTIONS"
+                text: "ACCIONES DEL PARCHE"
                 Layout.alignment: Qt.AlignLeft
                 height: 40
                 font.pixelSize: 18
@@ -69,31 +69,31 @@ Popup {
                     TableCell {
                         width: patchFileList.width * 0.20
                         height: parent.height
-                        content: "Name"
+                        content: "Nombre"
 				    }
 
                     TableCell {
                         width: patchFileList.width * 0.20
                         height: parent.height
-                        content: "Install"
+                        content: "Instalar"
 				    }
 
                     TableCell {
                         width: patchFileList.width * 0.20
                         height: parent.height
-                        content: "Local CRC"
+                        content: "CRC Local"
                     }
 
                     TableCell {
                         width: patchFileList.width * 0.20
                         height: parent.height
-                        content: "Remote CRC"
+                        content: "CRC Remoto"
                     }
 
                     TableCell {
                         width: patchFileList.width * 0.20
                         height: parent.height
-                        content: "Action"
+                        content: "Accion"
                     }
                 } 
             }
@@ -117,7 +117,7 @@ Popup {
 
          PlainButton {
             id: closeButton
-            label: "CLOSE"
+            label: "CERRAR"
             width: 100
             height: 50
             anchors.bottom: parent.bottom

@@ -26,7 +26,7 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             anchors.leftMargin: 35
-            text: "Checking game versions..."
+            text: "Comprobando version del juego..."
             font.pixelSize: 15
         }
     }
@@ -79,7 +79,7 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             anchors.leftMargin: 20
-            text: "Unable to patch game files"
+            text: "No se pueden encontrar los archivos"
             font.pixelSize: 15
             color: "#8f3131"
         }
@@ -87,7 +87,7 @@ Item {
         PlainButton {
             width: 120
             height: 40
-            label: "TRY AGAIN"
+            label: "INTENTE NUEVAMENTE"
             fontSize: 12
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: patchError.right
@@ -108,7 +108,7 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             anchors.leftMargin: 30
-            text: "Games are up to date"
+            text: "Juego actualizado a la fecha"
             font.pixelSize: 15
         }
 
@@ -122,7 +122,7 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: 6
                 anchors.rightMargin: 5
-                text: "Launch delay"
+                text: "Retardar lanzamiento"
                 font.pixelSize: 12
              }
 
@@ -133,7 +133,7 @@ Item {
                 anchors.rightMargin: 13
                 anchors.right: parent.right
                 currentIndex: 0
-                model: ["1 sec", "2 sec", "3 sec", "4 sec", "5 sec"]
+                model: ["1 seg", "2 seg", "3 seg", "4 seg", "5 seg"]
                 height: 30
                 width: 70
 
@@ -151,19 +151,19 @@ Item {
                 onActivated: {
                     var delay = 1000
                     switch(this.currentText) {
-                        case "1 sec":
+                        case "1 seg":
                             delay = 1000
                             break;
-                        case "2 sec":
+                        case "2 seg":
                             delay = 2000
                             break;
-                        case "3 sec":
+                        case "3 seg":
                             delay = 3000
                             break;
-                        case "4 sec":
+                        case "4 seg":
                             delay = 4000
                             break;
-                        case "5 sec":
+                        case "5 seg":
                             delay = 5000
                             break;
 
@@ -175,7 +175,7 @@ Item {
             // Launch button.
             PlainButton {
                 id: playButton
-                label: (diablo.launching ? "LAUNCHING..." : "PLAY")
+                label: (diablo.launching ? "INICIANDO..." : "JUGAR")
                 fontSize: 15
                 clickable: (!diablo.launching)
                 width: 275; height: 50
@@ -201,14 +201,14 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             anchors.leftMargin: 20
-            text: "Games need to be patched"
+            text: "El juego necesita actualizarse"
             font.pixelSize: 15
         }
 
         PlainButton {
             width: 120
             height: 40
-            label: "UPDATE NOW"
+            label: "ACTUALIZAR"
             fontSize: 12
             anchors.top: parent.top
             anchors.right: patchChanges.left

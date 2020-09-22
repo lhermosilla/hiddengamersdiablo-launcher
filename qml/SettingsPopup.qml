@@ -69,7 +69,7 @@ Popup {
                 Layout.fillHeight: true
 
                 Title {
-                    text: "GAME SETTINGS"
+                    text: "AJUSTES DEL JUEGO"
                     anchors.top: parent.top
                     anchors.left: parent.left
                     anchors.topMargin: 20
@@ -102,7 +102,7 @@ Popup {
                 // Add new game button.
                 Title {
                     visible: (gamesList.count <= 3)
-                    text: "+ Add Diablo II install"
+                    text: "+ Agregar instalacion Diablo II"
                     anchors.top: gamesList.bottom
                     anchors.left: parent.left
                     anchors.topMargin: 20
@@ -144,7 +144,7 @@ Popup {
                             width: intro.width
 
                             Title {
-                               text: "WELCOME TO SLASHDIABLO LAUNCHER"
+                               text: "BIENVENIDO AL LAUNCHER DE MANAOS DIABLO"
                                font.pixelSize: 20
                             }
 
@@ -156,7 +156,7 @@ Popup {
                             width: intro.width
 
                             SText {
-                                text: "Before you can play, you need to setup your game locations. You can setup multiple game directories with different settings such as HD mod or maphack."
+                                text: "Antes de poder jugar, debe configurar las ubicaciones de sus juegos. Puede configurar varios directorios de juegos con diferentes configuraciones, como HD mod o maphack."
                                 width: parent.width
                                 anchors.top: parent.top
                                 anchors.left: parent.left
@@ -172,7 +172,7 @@ Popup {
                             width: intro.width
 
                             Title {
-                               text: "HOW IT WORKS"
+                               text: "COMO FUNCIONA"
                                font.pixelSize: 16
                             }
 
@@ -202,7 +202,7 @@ Popup {
                                 }
 
                                 SText {
-                                    text: "Setup one or multiple Diablo II games you have installed"
+                                    text: "Configure uno o varios juegos de Diablo II que haya instalado"
                                     anchors.verticalCenter: parent.verticalCenter
                                     color: "#a3a3a3"
                                 }
@@ -235,7 +235,7 @@ Popup {
                                 }
 
                                 SText {
-                                    text: "Choose how many instances to launch and if you want HD or maphack included"
+                                    text: "Elija cuántas instancias lanzar y si desea incluir HD o maphack"
                                     anchors.verticalCenter: parent.verticalCenter
                                     color: "#a3a3a3"
                                 }
@@ -268,7 +268,7 @@ Popup {
                                 }
 
                                 SText {
-                                    text: "The launcher will figure out if you need to patch the games to be up to date with Slashdiablo"
+                                    text: "El lanzador determinará si necesitas parchear los juegos para estar al día con ManaosDiablo"
                                     anchors.verticalCenter: parent.verticalCenter
                                     color: "#a3a3a3"
                                 }
@@ -301,7 +301,7 @@ Popup {
                                 }
 
                                 SText {
-                                    text: "After patching is done you're ready to play"
+                                    text: "Una vez finalizado el parche, estará listo para jugar."
                                     anchors.verticalCenter: parent.verticalCenter
                                     color: "#a3a3a3"
                                 } 
@@ -317,7 +317,7 @@ Popup {
                             PlainButton {
                                 width: 200
                                 height: 50
-                                label: "GET STARTED"
+                                label: "EMPEZAR"
                                 anchors.top: parent.top
                                 anchors.topMargin: 15
 
@@ -360,7 +360,7 @@ Popup {
 
 
                     SText {
-                        text: "New Game doesn't have Diablo II directory set."
+                        text: "El juego nuevo no tiene configurado el directorio de Diablo II."
                         font.pixelSize: 11
                         anchors.centerIn: parent
                         color: "#ffffff"
@@ -370,7 +370,7 @@ Popup {
                 PlainButton {
                     id: doneButton
                     visible: (gamesList.count > 0)
-                    label: "DONE"
+                    label: "LISTO"
                     width: 100
                     height: 50
                     anchors.bottom: parent.bottom
