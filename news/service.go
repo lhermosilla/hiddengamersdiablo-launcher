@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/nokka/slashdiablo-launcher/clients/slashdiablo"
+	"github.com/marcost96/manaosdiablo-launcher/clients/manaosdiablo"
 )
 
 // Service is responsible for all things related to the news.
@@ -14,7 +14,7 @@ type Service interface {
 }
 
 type service struct {
-	client    slashdiablo.Client
+	client    manaosdiablo.Client
 	newsModel *Model
 }
 
@@ -73,7 +73,7 @@ func newItem(item JSONItem) *Item {
 
 // NewService returns a service with all the dependencies.
 func NewService(
-	client slashdiablo.Client,
+	client manaosdiablo.Client,
 	newsModel *Model,
 ) Service {
 	return &service{

@@ -38,7 +38,7 @@ Item {
             height: row.height
 
             Text {
-                color: (model.fileAction == "descarga" ? "#64d168" : "#fa5757")
+                color: (model.fileAction == "descargar" ? "#64d168" : "#fa5757")
                 font.pixelSize: 12
                 font.family: beaufortbold.name
                 text: model.fileAction

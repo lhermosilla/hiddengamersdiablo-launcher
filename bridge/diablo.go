@@ -1,7 +1,7 @@
 package bridge
 
 import (
-	"github.com/nokka/slashdiablo-launcher/d2"
+	"github.com/marcost96/manaosdiablo-launcher/d2"
 	"github.com/nokka/slashdiablo-launcher/log"
 	"github.com/therecipe/qt/core"
 )

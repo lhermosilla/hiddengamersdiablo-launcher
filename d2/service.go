@@ -11,10 +11,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/nokka/slashdiablo-launcher/clients/slashdiablo"
-	"github.com/nokka/slashdiablo-launcher/config"
+	"github.com/marcost96/manaosdiablo-launcher/clients/manaosdiablo"
+	"github.com/marcost96/manaosdiablo-launcher/config"
+	"github.com/marcost96/manaosdiablo-launcher/storage"
 	"github.com/nokka/slashdiablo-launcher/log"
-	"github.com/nokka/slashdiablo-launcher/storage"
 )
 
 // Service is responsible for all things related to the Slashdiablo ladder.
@@ -37,14 +37,14 @@ type Service interface {
 
 // Service is responsible for all things related to Diablo II.
 type service struct {
-	slashdiabloClient slashdiablo.Client
-	configService     config.Service
-	logger            log.Logger
-	gameStates        chan execState
-	availableMods     *config.GameMods
-	runningGames      []game
-	mux               sync.Mutex
-	patchFileModel    *FileModel
+	manaosdiabloClient manaosdiablo.Client
+	configService      config.Service
+	logger             log.Logger
+	gameStates         chan execState
+	availableMods      *config.GameMods
+	runningGames       []game
+	mux                sync.Mutex
+	patchFileModel     *FileModel
 }
 
 type game struct {
@@ -110,7 +110,7 @@ func (s *service) getAvailableMods() (*config.GameMods, error) {
 	}
 
 	// No cached mods exist, fetch remote mods.
-	contents, err := s.slashdiabloClient.GetAvailableMods()
+	contents, err := s.manaosdiabloClient.GetAvailableMods()
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +139,7 @@ func (s *service) ValidateGameVersions() (bool, error) {
 	}
 
 	// Get current slash patch and compare.
-	version113cManifest, err := s.getManifest("1.13c/manifest.json")
+	version113cManifest, err := s.getManifest("1.14b/manifest.json")
 	if err != nil {
 		return false, err
 	}
@@ -400,7 +400,7 @@ func (s *service) Patch(done chan bool) (<-chan float32, <-chan PatchState) {
 
 				// Just to be safe and avoid a panic.
 				if maphackManifests[game.MaphackVersion] == nil {
-					state <- PatchState{Error: errors.New("missing maphack manifest")}
+					state <- PatchState{Error: errors.New("no hay manifest del mh")}
 					return
 				}
 
@@ -427,7 +427,7 @@ func (s *service) Patch(done chan bool) (<-chan float32, <-chan PatchState) {
 
 				// Just to be safe and avoid a panic.
 				if hdManifests[game.HDVersion] == nil {
-					state <- PatchState{Error: errors.New("missing hd manifest")}
+					state <- PatchState{Error: errors.New("no hay manifest del hd")}
 					return
 				}
 
@@ -490,7 +490,7 @@ func (s *service) listenForGameStates() {
 		case state := <-s.gameStates:
 			// Something went wrong while execing, log error.
 			if state.err != nil {
-				s.logger.Error(fmt.Errorf("Diablo II exec with code: %s", state.err))
+				s.logger.Error(fmt.Errorf("Diablo II exec con codigo: %s", state.err))
 			}
 
 			s.mux.Lock()
@@ -603,10 +603,10 @@ func (s *service) validateHDVersion(game *storage.Game, versions []string) (bool
 }
 
 func (s *service) apply113c(path string, state chan PatchState, progress chan float32) error {
-	state <- PatchState{Message: "Checking game version..."}
+	state <- PatchState{Message: "Comprobando version del juego..."}
 
 	// Download manifest from patch repository.
-	manifest, err := s.getManifest("1.13c/manifest.json")
+	manifest, err := s.getManifest("1.14b/manifest.json")
 	if err != nil {
 		return err
 	}
@@ -618,12 +618,12 @@ func (s *service) apply113c(path string, state chan PatchState, progress chan fl
 	}
 
 	if len(patchFiles) > 0 {
-		state <- PatchState{Message: fmt.Sprintf("Updating %s to 1.13c", path)}
-		if err := s.doPatch(patchFiles, patchLength, "1.13c", path, progress); err != nil {
+		state <- PatchState{Message: fmt.Sprintf("Actualizando %s a 1.14b", path)}
+		if err := s.doPatch(patchFiles, patchLength, "1.14b", path, progress); err != nil {
 			patchErr := err
 			// Make sure we clean up the failed patch.
 			if err := s.cleanUpFailedPatch(path); err != nil {
-				return fmt.Errorf("Clean up error: %s : %s", patchErr, err)
+				return fmt.Errorf("Error de limpieza: %s : %s", patchErr, err)
 			}
 
 			return err
@@ -634,7 +634,7 @@ func (s *service) apply113c(path string, state chan PatchState, progress chan fl
 }
 
 func (s *service) applySlashPatch(path string, state chan PatchState, progress chan float32) error {
-	state <- PatchState{Message: "Checking Slashdiablo patch..."}
+	state <- PatchState{Message: "Comprobando parche de ManaosDiablo..."}
 
 	// Download manifest from patch repository.
 	manifest, err := s.getManifest("current/manifest.json")
@@ -649,13 +649,13 @@ func (s *service) applySlashPatch(path string, state chan PatchState, progress c
 	}
 
 	if len(patchFiles) > 0 {
-		state <- PatchState{Message: fmt.Sprintf("Updating %s to current Slashdiablo patch", path)}
+		state <- PatchState{Message: fmt.Sprintf("Actualizando %s al parche actual de ManaosDiablo", path)}
 
 		if err = s.doPatch(patchFiles, patchLength, "current", path, progress); err != nil {
 			patchErr := err
 			// Make sure we clean up the failed patch.
 			if err := s.cleanUpFailedPatch(path); err != nil {
-				return fmt.Errorf("Clean up error: %s : %s", patchErr, err)
+				return fmt.Errorf("Error de limpieza: %s : %s", patchErr, err)
 			}
 
 			return err
@@ -666,7 +666,7 @@ func (s *service) applySlashPatch(path string, state chan PatchState, progress c
 }
 
 func (s *service) applyMaphack(path string, version string, state chan PatchState, progress chan float32, manifestFiles []PatchFile, ignoredFiles []string) error {
-	state <- PatchState{Message: "Checking maphack version..."}
+	state <- PatchState{Message: "Comprobando version del Maphack.."}
 
 	// Figure out which files to patch.
 	patchFiles, patchLength, err := s.getFilesToPatch(manifestFiles, path, ignoredFiles)
@@ -675,7 +675,7 @@ func (s *service) applyMaphack(path string, version string, state chan PatchStat
 	}
 
 	if len(patchFiles) > 0 {
-		state <- PatchState{Message: fmt.Sprintf("Updating %s to maphack version %s", path, version)}
+		state <- PatchState{Message: fmt.Sprintf("Actualizando %s a la version del maphack %s", path, version)}
 
 		remoteDir := fmt.Sprintf("maphack_%s", version)
 
@@ -683,7 +683,7 @@ func (s *service) applyMaphack(path string, version string, state chan PatchStat
 			patchErr := err
 			// Make sure we clean up the failed patch.
 			if err := s.cleanUpFailedPatch(path); err != nil {
-				return fmt.Errorf("Clean up error: %s : %s", patchErr, err)
+				return fmt.Errorf("Error de limpieza: %s : %s", patchErr, err)
 			}
 
 			return err
@@ -695,7 +695,7 @@ func (s *service) applyMaphack(path string, version string, state chan PatchStat
 
 func (s *service) applyHDMod(path string, version string, state chan PatchState, progress chan float32, manifestFiles []PatchFile) error {
 	// Update UI.
-	state <- PatchState{Message: "Checking HD mod version..."}
+	state <- PatchState{Message: "Comprobando version del Mod HD..."}
 
 	// Figure out which files to patch.
 	patchFiles, patchLength, err := s.getFilesToPatch(manifestFiles, path, nil)
@@ -705,7 +705,7 @@ func (s *service) applyHDMod(path string, version string, state chan PatchState,
 
 	if len(patchFiles) > 0 {
 		// Update UI.
-		state <- PatchState{Message: fmt.Sprintf("Updating %s to HD %s mod version", path, version)}
+		state <- PatchState{Message: fmt.Sprintf("Actualizando %s la version %s del mod HD", path, version)}
 
 		remoteDir := fmt.Sprintf("hd_%s", version)
 
@@ -713,7 +713,7 @@ func (s *service) applyHDMod(path string, version string, state chan PatchState,
 			patchErr := err
 			// Make sure we clean up the failed patch.
 			if err := s.cleanUpFailedPatch(path); err != nil {
-				return fmt.Errorf("Clean up error: %s : %s", patchErr, err)
+				return fmt.Errorf("Error de limpieza: %s : %s", patchErr, err)
 			}
 
 			return err
@@ -779,7 +779,7 @@ func (s *service) downloadFile(fileName string, remoteDir string, path string, c
 	defer out.Close()
 
 	f := fmt.Sprintf("%s/%s", remoteDir, fileName)
-	contents, err := s.slashdiabloClient.GetFile(f)
+	contents, err := s.manaosdiabloClient.GetFile(f)
 	if err != nil {
 		return err
 	}
@@ -944,7 +944,7 @@ func (s *service) getFilesToPatch(files []PatchFile, d2path string, filesToIgnor
 }
 
 func (s *service) getManifest(path string) (*Manifest, error) {
-	contents, err := s.slashdiabloClient.GetFile(path)
+	contents, err := s.manaosdiabloClient.GetFile(path)
 	if err != nil {
 		return nil, err
 	}
@@ -1025,8 +1025,8 @@ type Action string
 
 // Allowed actions.
 const (
-	ActionDownload Action = "download"
-	ActionDelete   Action = "delete"
+	ActionDownload Action = "descargar"
+	ActionDelete   Action = "eliminar"
 )
 
 // PatchAction is performed while patching.
@@ -1039,17 +1039,17 @@ type PatchAction struct {
 
 // NewService returns a service with all the dependencies.
 func NewService(
-	slashdiabloClient slashdiablo.Client,
+	manaosdiabloClient manaosdiablo.Client,
 	configuration config.Service,
 	logger log.Logger,
 	patchFileModel *FileModel,
 ) Service {
 	s := &service{
-		slashdiabloClient: slashdiabloClient,
-		configService:     configuration,
-		logger:            logger,
-		gameStates:        make(chan execState, 4),
-		patchFileModel:    patchFileModel,
+		manaosdiabloClient: manaosdiabloClient,
+		configService:      configuration,
+		logger:             logger,
+		gameStates:         make(chan execState, 4),
+		patchFileModel:     patchFileModel,
 	}
 
 	// Setup game listener once, will stay alive for the duration

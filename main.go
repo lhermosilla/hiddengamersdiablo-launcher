@@ -1,4 +1,4 @@
-//go:generate goversioninfo -icon=icon.ico -manifest=slashdiablo-launcher.exe.manifest -64
+//go:generate goversioninfo -icon=icon.ico -manifest=manaosdiablo-launcher.exe.manifest -64
 
 package main
 
@@ -8,16 +8,16 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/marcost96/manaosdiablo-launcher/bridge"
+	"github.com/marcost96/manaosdiablo-launcher/clients/manaosdiablo"
+	"github.com/marcost96/manaosdiablo-launcher/config"
+	"github.com/marcost96/manaosdiablo-launcher/d2"
+	"github.com/marcost96/manaosdiablo-launcher/news"
+	"github.com/marcost96/manaosdiablo-launcher/storage"
 	"github.com/nokka/goqmlframeless"
-	"github.com/nokka/slashdiablo-launcher/bridge"
 	ladderClient "github.com/nokka/slashdiablo-launcher/clients/ladder"
-	"github.com/nokka/slashdiablo-launcher/clients/slashdiablo"
-	"github.com/nokka/slashdiablo-launcher/config"
-	"github.com/nokka/slashdiablo-launcher/d2"
 	"github.com/nokka/slashdiablo-launcher/ladder"
 	"github.com/nokka/slashdiablo-launcher/log"
-	"github.com/nokka/slashdiablo-launcher/news"
-	"github.com/nokka/slashdiablo-launcher/storage"
 	"github.com/therecipe/qt/core"
 	"github.com/therecipe/qt/quick"
 	"github.com/therecipe/qt/widgets"
@@ -94,14 +94,15 @@ func main() {
 	fm := d2.NewFileModel(nil)
 
 	// Setup clients.
-	sc := slashdiablo.NewClient()
+	md := manaosdiablo.NewClient()
+	//sc := slashdiablo.NewClient()
 	lc := ladderClient.NewClient()
 
 	// Setup services.
-	cs := config.NewService(sc, store, gm)
-	d2s := d2.NewService(sc, cs, logger, fm)
+	cs := config.NewService(md, store, gm)
+	d2s := d2.NewService(md, cs, logger, fm)
 	ls := ladder.NewService(lc, lm)
-	ns := news.NewService(sc, nm)
+	ns := news.NewService(md, nm)
 
 	// Populate the game model with the game config
 	// before passing it to the config bridge.
