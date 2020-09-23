@@ -6,7 +6,7 @@ import (
 
 const (
 	// ModVersionNone is used to determine that no mod version has been chosen for a game.
-	ModVersionNone = "none"
+	ModVersionNone = "ninguno"
 )
 
 // Game represents a diablo installation in the configuration.

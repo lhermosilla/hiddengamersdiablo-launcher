@@ -28,14 +28,14 @@ func main() {
 	var (
 		debugMode    = envBool("DEBUG_MODE", false)
 		environment  = envString("ENVIRONMENT", "production")
-		buildVersion = envString("BUILD_VERSION", "v1.1.2")
+		buildVersion = envString("BUILD_VERSION", "v1.0.1")
 	)
 
 	// Set app context.
-	core.QCoreApplication_SetApplicationName("Slashdiablo launcher")
-	core.QCoreApplication_SetOrganizationName("slashdiablo.net")
-	core.QCoreApplication_SetOrganizationDomain("slashdiablo.net")
-	core.QCoreApplication_SetApplicationVersion("1.1.2")
+	core.QCoreApplication_SetApplicationName("ManaosDiablo Launcher")
+	core.QCoreApplication_SetOrganizationName("manaosdiablo.com")
+	core.QCoreApplication_SetOrganizationDomain("manaosdiablo.com")
+	core.QCoreApplication_SetApplicationVersion("1.0.1")
 
 	// Enable high dpi scaling, useful for devices with high pixel density displays.
 	core.QCoreApplication_SetAttribute(core.Qt__AA_EnableHighDpiScaling, true)
