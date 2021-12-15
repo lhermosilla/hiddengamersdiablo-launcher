@@ -1,4 +1,4 @@
-//go:generate goversioninfo -icon=icon.ico -manifest=manaosdiablo-launcher.exe.manifest -64
+//go:generate goversioninfo -icon=icon.ico -manifest=hiddengamersdiablo-launcher.exe.manifest -64
 
 package main
 
