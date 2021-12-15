@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 
 	"github.com/lhermosilla/hiddengamersdiablo-launcher/clients/hiddengamersdiablo"
-	"github.com/lhermosilla/hiddengamersdiablo-launcher/clients/manaosdiablo"
 )
 
 // Service is responsible for all things related to the news.
@@ -74,7 +73,7 @@ func newItem(item JSONItem) *Item {
 
 // NewService returns a service with all the dependencies.
 func NewService(
-	client manaosdiablo.Client,
+	client hiddengamersdiablo.Client,
 	newsModel *Model,
 ) Service {
 	return &service{

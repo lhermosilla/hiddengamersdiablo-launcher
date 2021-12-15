@@ -31,9 +31,9 @@ func main() {
 	)
 
 	// Set app context.
-	core.QCoreApplication_SetApplicationName("ManaosDiablo Launcher")
-	core.QCoreApplication_SetOrganizationName("manaosdiablo.com")
-	core.QCoreApplication_SetOrganizationDomain("manaosdiablo.com")
+	core.QCoreApplication_SetApplicationName("HiddenGamersDiablo Launcher")
+	core.QCoreApplication_SetOrganizationName("hiddengamers.cl")
+	core.QCoreApplication_SetOrganizationDomain("hiddengamers.cl")
 	core.QCoreApplication_SetApplicationVersion("1.0.1")
 
 	// Enable high dpi scaling, useful for devices with high pixel density displays.

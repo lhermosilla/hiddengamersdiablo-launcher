@@ -19,16 +19,16 @@
         "FileSubType": "00"
     },
     "StringFileInfo": {
-        "Comments": "ManaosDiablo Launcher",
-        "CompanyName": "ManaosDiablo",
-        "FileDescription": "ManaosDiablo Launcher",
+        "Comments": "HiddenGamersDiablo Launcher",
+        "CompanyName": "HiddenGamersDiablo",
+        "FileDescription": "HiddenGamersDiablo Launcher",
         "FileVersion": "v1.0.1.0",
-        "InternalName": "ManaosDiablo-launcher.exe",
-        "LegalCopyright": "Copyright (c) 2020 ManaosDiablo",
+        "InternalName": "HiddenGamersDiablo-launcher.exe",
+        "LegalCopyright": "Copyright (c) 2017 HiddenGamersDiablo",
         "LegalTrademarks": "",
-        "OriginalFilename": "ManaosDiablo.exe",
+        "OriginalFilename": "HiddenGamersDiablo.exe",
         "PrivateBuild": "",
-        "ProductName": "ManaosDiablo launcher",
+        "ProductName": "HiddenGamersDiablo launcher",
         "ProductVersion": "v1.0.1.0",
         "SpecialBuild": ""
     },
@@ -39,5 +39,5 @@
         }
     },
     "IconPath": "icon.ico",
-    "ManifestPath": "manaosdiablo-launcher.exe.manifest"
+    "ManifestPath": "hiddengamersdiablo-launcher.exe.manifest"
 }
