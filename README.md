@@ -1,15 +1,15 @@
-# ManaosDiablo launcher
+# HiddenGamersDiablo launcher
 
 ![launcher imagen](/docs/launcher.png)
 
 ## Sobre el proyecto
 
-El lanzador ManaosDiablo es un launcher de juegos multiplataforma para Diablo II y específicamente para la comunidad [ManaosDiablo] (https://old.reddit.com/r/manaosdiablo/). Fue creado para ayudar a los nuevos jugadores a instalar parches, actualizar registros y ayudar con otros problemas técnicos para reducir la barrera de entrada a la comunidad de Manaosdiablo, al mismo tiempo que ayuda a los jugadores más experimentados con configuraciones más avanzadas, como mods HD y el lanzamiento de múltiples cajas.
+El lanzador HiddenGamersDiablo es un launcher de juegos multiplataforma para Diablo II y específicamente para la comunidad [HiddenGamersDiablo] (https://hiddengamers.cl/). Fue creado para ayudar a los nuevos jugadores a instalar parches, actualizar registros y ayudar con otros problemas técnicos para reducir la barrera de entrada a la comunidad de HiddenGamersDiablo, al mismo tiempo que ayuda a los jugadores más experimentados con configuraciones más avanzadas, como mods HD y el lanzamiento de múltiples cajas.
 
 ## Features
 
 - [x] Parchea cualquier* Diablo II LOD a la versión 1.14b
-- [x] Aplica el parche de ManaosDiablo automáticamente
+- [x] Aplica el parche de HiddenGamersDiablo automáticamente
 - [x] Parche una lista de acciones - sabe exactamente que archivos actualizar
 - [x] Permite múltiples instalaciones de Diablo II con diferentes ajustes (como el Maphack & HD)
 - [x] Instala automáticamente y actualia el Maphack & mod HD
@@ -48,21 +48,21 @@ $ brew install qt
 
 Utilice el [instalador](https://download.qt.io/official_releases/qt/5.13/5.13.0/qt-opensource-windows-x86-5.13.0.exe) proporcionado por Qt (asegúrese de instalar el MinGW de Qt).
 
-#### Construyendo el lanzador de ManaosDiablo
+#### Construyendo el lanzador de HiddenGamersDiablo
 
 ```bash
 # Obtener fuente de enlace
 $ go get -u -v -tags=no_env github.com/therecipe/qt/cmd/...
 
 # Descarga el repositorio con dependencias
-$ go get -d -u -v github.com/marcost96/manaosdiablo-launcher
+$ go get -d -u -v github.com/lhermosilla/hiddengamersdiablo-launcher
 
 # Construye el lanzador
-$ cd $(go env GOPATH)/src/github.com/marcost96/manaosdiablo-launcher
+$ cd $(go env GOPATH)/src/github.com/lhermosilla/hiddengamersdiablo-launcher
 $ qtdeploy build
 
 # Iniciar lanzador (diferente según el sistema operativo)
-$ ./deploy/darwin/manaosdiablo-launcher.app/Contents/MacOS/manaosdiablo-launcher
+$ ./deploy/darwin/hiddengamersdiablo-launcher.app/Contents/MacOS/hiddengamersdiablo-launcher
 ```
 
 ## Deploying
@@ -100,7 +100,7 @@ $  go generate
 ### MacOS (solo desde MacOS)
 
 ```bash
-$ qtdeploy build darwin github.com/marcost96/manaosdiablo-launcher
+$ qtdeploy build darwin github.com/lhermosilla/hiddengamersdiablo-launcher
 ```
 
 ### Creditos
