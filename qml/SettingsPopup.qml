@@ -144,7 +144,7 @@ Popup {
                             width: intro.width
 
                             Title {
-                               text: "BIENVENIDO AL LAUNCHER DE MANAOS DIABLO"
+                               text: "BIENVENIDO AL LAUNCHER DE HIDDENGAMERS DIABLO"
                                font.pixelSize: 20
                             }
 

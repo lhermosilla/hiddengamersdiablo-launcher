@@ -51,7 +51,7 @@ Rectangle {
                         anchors.bottom: parent.bottom
                         font.pixelSize: 16
                         color: "#736c6a"
-                        text: "CONECTANDO A MANAOS DIABLO..."
+                        text: "CONECTANDO A HIDDENGAMERS DIABLO..."
                     }
                 }
 
@@ -82,7 +82,7 @@ Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         font.pixelSize: 14
                         color: "#736c6a"
-                        text: "Un error ocurrio al intentar conectar a ManaosDiablo"
+                        text: "Un error ocurrio al intentar conectar a HiddenGamers Diablo"
                     }
                 }
 

@@ -3,8 +3,8 @@ package bridge
 import (
 	"encoding/json"
 
-	"github.com/marcost96/manaosdiablo-launcher/config"
-	"github.com/marcost96/manaosdiablo-launcher/log"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/config"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/log"
 	"github.com/therecipe/qt/core"
 	"github.com/therecipe/qt/gui"
 )

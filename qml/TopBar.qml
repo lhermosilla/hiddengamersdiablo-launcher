@@ -51,7 +51,7 @@ Item {
                     active: (activeMenuItem == "community")
 
                     onClicked: function() {
-                        Qt.openUrlExternally("https://reddit.com/r/manaosdiablo/")
+                        Qt.openUrlExternally("https://hiddengamers.cl/")
                     }
                 }
             }
@@ -66,7 +66,7 @@ Item {
                     active: (activeMenuItem == "ladder")
 
                     onClicked: function() {
-                        Qt.openUrlExternally("https://www.facebook.com/ManaosDiablo")
+                        Qt.openUrlExternally("https://www.facebook.com/HiddenGamersD2")
                     }
                 }
             }
@@ -81,7 +81,7 @@ Item {
                     active: (activeMenuItem == "ladder")
 
                     onClicked: function() {
-                        Qt.openUrlExternally("https://discord.com/invite/QVNnzDR")
+                        Qt.openUrlExternally("https://discord.gg/T7TGTsbUAf")
                     }
                 }
             }
@@ -96,7 +96,7 @@ Item {
                     active: (activeMenuItem == "ladder")
 
                     onClicked: function() {
-                        Qt.openUrlExternally("https://chat.whatsapp.com/BxzRkTOQQNA156Ft80tF9u")
+                        Qt.openUrlExternally("https://chat.whatsapp.com/Dnji3wgwT6v73wbZQqTYFu")
                     }
                 }
                 

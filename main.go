@@ -8,12 +8,11 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/marcost96/manaosdiablo-launcher/bridge"
-	"github.com/marcost96/manaosdiablo-launcher/clients/manaosdiablo"
-	"github.com/marcost96/manaosdiablo-launcher/config"
-	"github.com/marcost96/manaosdiablo-launcher/d2"
-	"github.com/marcost96/manaosdiablo-launcher/news"
-	"github.com/marcost96/manaosdiablo-launcher/storage"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/bridge"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/config"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/d2"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/news"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/storage"
 	"github.com/nokka/goqmlframeless"
 	ladderClient "github.com/nokka/slashdiablo-launcher/clients/ladder"
 	"github.com/nokka/slashdiablo-launcher/ladder"
@@ -94,7 +93,7 @@ func main() {
 	fm := d2.NewFileModel(nil)
 
 	// Setup clients.
-	md := manaosdiablo.NewClient()
+	md := hiddengamersdiablo.NewClient()
 	//sc := slashdiablo.NewClient()
 	lc := ladderClient.NewClient()
 

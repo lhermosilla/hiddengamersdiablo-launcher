@@ -6,8 +6,7 @@ import (
 	"sync"
 
 	"github.com/google/uuid"
-	"github.com/marcost96/manaosdiablo-launcher/clients/manaosdiablo"
-	"github.com/marcost96/manaosdiablo-launcher/storage"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/storage"
 )
 
 // Service is responsible for all things related to configuration.
@@ -35,10 +34,10 @@ type Service interface {
 }
 
 type service struct {
-	manaosdiabloClient manaosdiablo.Client
-	store              storage.Store
-	gameModel          *GameModel
-	mutex              sync.Mutex
+	hiddengamersdiabloClient hiddengamersdiablo.Client
+	store                    storage.Store
+	gameModel                *GameModel
+	mutex                    sync.Mutex
 }
 
 // Read will read the configuration and return it.
@@ -206,7 +205,7 @@ func (s *service) UpdateLaunchDelay(delay int) error {
 
 // GetAvailableMods will get available mods from the Slashdiablo API.
 func (s *service) GetAvailableMods() (*GameMods, error) {
-	contents, err := s.manaosdiabloClient.GetAvailableMods()
+	contents, err := s.hiddengamersdiabloClient.GetAvailableMods()
 	if err != nil {
 		return nil, err
 	}
@@ -226,13 +225,13 @@ func (s *service) GetAvailableMods() (*GameMods, error) {
 
 // NewService returns a service with all the dependencies.
 func NewService(
-	manaosdiabloClient manaosdiablo.Client,
+	hiddengamersdiabloClient hiddengamersdiablo.Client,
 	store storage.Store,
 	gameModel *GameModel,
 ) Service {
 	return &service{
-		manaosdiabloClient: manaosdiabloClient,
-		store:              store,
-		gameModel:          gameModel,
+		hiddengamersdiabloClient: hiddengamersdiabloClient,
+		store:                    store,
+		gameModel:                gameModel,
 	}
 }

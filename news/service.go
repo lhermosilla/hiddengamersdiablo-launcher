@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/marcost96/manaosdiablo-launcher/clients/manaosdiablo"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/clients/hiddengamersdiablo"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/clients/manaosdiablo"
 )
 
 // Service is responsible for all things related to the news.
@@ -14,7 +15,7 @@ type Service interface {
 }
 
 type service struct {
-	client    manaosdiablo.Client
+	client    hiddengamersdiablo.Client
 	newsModel *Model
 }
 

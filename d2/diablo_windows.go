@@ -1,3 +1,4 @@
+//go:build windows
 // +build windows
 
 package d2
@@ -23,7 +24,7 @@ var hashList = map[string]string{
 	"11cd918cb6906295769d9be1b3e349e02af6b229": "1.13d",
 	"3e64f12c6ef72847f49d301c2472280d4460589d": "1.14a",
 	"11e940266c6838414c2114c2172227f982d4054e": "1.14b",
-	"928cb9daedc562e04a18cd62acd71c346247e260": "1.14b", // 1.14b personalizado para Manaos
+	"928cb9daedc562e04a18cd62acd71c346247e260": "1.14b", // 1.14b personalizado para hiddengamers d2
 	"255691dd53e3bcd646e5c6e1e2e7b16da745b706": "1.14c",
 	"af0ea93d2a652ceb11ac01ee2e4ae1ef613444c2": "1.14d",
 }
@@ -64,7 +65,7 @@ func validate113cVersion(path string) (bool, error) {
 		return false, nil
 	}
 
-	return version == "1.14b", nil
+	return version == "1.13c", nil
 }
 
 // launch will execute the Diablo II.exe in the given directory.

@@ -11,9 +11,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/marcost96/manaosdiablo-launcher/clients/manaosdiablo"
-	"github.com/marcost96/manaosdiablo-launcher/config"
-	"github.com/marcost96/manaosdiablo-launcher/storage"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/clients/hiddengamersdiablo"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/config"
+	"github.com/lhermosilla/hiddengamersdiablo-launcher/storage"
 	"github.com/nokka/slashdiablo-launcher/log"
 )
 
@@ -37,14 +37,14 @@ type Service interface {
 
 // Service is responsible for all things related to Diablo II.
 type service struct {
-	manaosdiabloClient manaosdiablo.Client
-	configService      config.Service
-	logger             log.Logger
-	gameStates         chan execState
-	availableMods      *config.GameMods
-	runningGames       []game
-	mux                sync.Mutex
-	patchFileModel     *FileModel
+	hiddengamersdiabloClient hiddengamersdiablo.Client
+	configService            config.Service
+	logger                   log.Logger
+	gameStates               chan execState
+	availableMods            *config.GameMods
+	runningGames             []game
+	mux                      sync.Mutex
+	patchFileModel           *FileModel
 }
 
 type game struct {
@@ -110,7 +110,7 @@ func (s *service) getAvailableMods() (*config.GameMods, error) {
 	}
 
 	// No cached mods exist, fetch remote mods.
-	contents, err := s.manaosdiabloClient.GetAvailableMods()
+	contents, err := s.hiddengamersdiabloClient.GetAvailableMods()
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +139,7 @@ func (s *service) ValidateGameVersions() (bool, error) {
 	}
 
 	// Get current slash patch and compare.
-	version113cManifest, err := s.getManifest("1.14b/manifest.json")
+	version113cManifest, err := s.getManifest("1.13c/manifest.json")
 	if err != nil {
 		return false, err
 	}
@@ -606,7 +606,7 @@ func (s *service) apply113c(path string, state chan PatchState, progress chan fl
 	state <- PatchState{Message: "Comprobando version del juego..."}
 
 	// Download manifest from patch repository.
-	manifest, err := s.getManifest("1.14b/manifest.json")
+	manifest, err := s.getManifest("1.13c/manifest.json")
 	if err != nil {
 		return err
 	}
@@ -618,8 +618,8 @@ func (s *service) apply113c(path string, state chan PatchState, progress chan fl
 	}
 
 	if len(patchFiles) > 0 {
-		state <- PatchState{Message: fmt.Sprintf("Actualizando %s a 1.14b", path)}
-		if err := s.doPatch(patchFiles, patchLength, "1.14b", path, progress); err != nil {
+		state <- PatchState{Message: fmt.Sprintf("Actualizando %s a 1.13c", path)}
+		if err := s.doPatch(patchFiles, patchLength, "1.13c", path, progress); err != nil {
 			patchErr := err
 			// Make sure we clean up the failed patch.
 			if err := s.cleanUpFailedPatch(path); err != nil {
@@ -634,7 +634,7 @@ func (s *service) apply113c(path string, state chan PatchState, progress chan fl
 }
 
 func (s *service) applySlashPatch(path string, state chan PatchState, progress chan float32) error {
-	state <- PatchState{Message: "Comprobando parche de ManaosDiablo..."}
+	state <- PatchState{Message: "Comprobando parche de HiddenGamers Diablo..."}
 
 	// Download manifest from patch repository.
 	manifest, err := s.getManifest("current/manifest.json")
@@ -649,7 +649,7 @@ func (s *service) applySlashPatch(path string, state chan PatchState, progress c
 	}
 
 	if len(patchFiles) > 0 {
-		state <- PatchState{Message: fmt.Sprintf("Actualizando %s al parche actual de ManaosDiablo", path)}
+		state <- PatchState{Message: fmt.Sprintf("Actualizando %s al parche actual de HiddenGamers Diablo", path)}
 
 		if err = s.doPatch(patchFiles, patchLength, "current", path, progress); err != nil {
 			patchErr := err
@@ -779,7 +779,7 @@ func (s *service) downloadFile(fileName string, remoteDir string, path string, c
 	defer out.Close()
 
 	f := fmt.Sprintf("%s/%s", remoteDir, fileName)
-	contents, err := s.manaosdiabloClient.GetFile(f)
+	contents, err := s.hiddengamersdiabloClient.GetFile(f)
 	if err != nil {
 		return err
 	}
@@ -944,7 +944,7 @@ func (s *service) getFilesToPatch(files []PatchFile, d2path string, filesToIgnor
 }
 
 func (s *service) getManifest(path string) (*Manifest, error) {
-	contents, err := s.manaosdiabloClient.GetFile(path)
+	contents, err := s.hiddengamersdiabloClient.GetFile(path)
 	if err != nil {
 		return nil, err
 	}
@@ -1039,17 +1039,17 @@ type PatchAction struct {
 
 // NewService returns a service with all the dependencies.
 func NewService(
-	manaosdiabloClient manaosdiablo.Client,
+	hiddengamersdiabloClient hiddengamersdiablo.Client,
 	configuration config.Service,
 	logger log.Logger,
 	patchFileModel *FileModel,
 ) Service {
 	s := &service{
-		manaosdiabloClient: manaosdiabloClient,
-		configService:      configuration,
-		logger:             logger,
-		gameStates:         make(chan execState, 4),
-		patchFileModel:     patchFileModel,
+		hiddengamersdiabloClient: hiddengamersdiabloClient,
+		configService:            configuration,
+		logger:                   logger,
+		gameStates:               make(chan execState, 4),
+		patchFileModel:           patchFileModel,
 	}
 
 	// Setup game listener once, will stay alive for the duration

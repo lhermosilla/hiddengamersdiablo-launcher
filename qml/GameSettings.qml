@@ -304,7 +304,7 @@ Item {
                         }
 
                         SText {
-                            text: "Número de veces que abrira el juego"
+                            text: "Número de veces que abrirá el juego"
                             font.pixelSize: 11
                             topPadding: 5
                             color: "#676767"

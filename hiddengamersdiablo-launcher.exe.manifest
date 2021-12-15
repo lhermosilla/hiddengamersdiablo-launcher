@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-	<assemblyIdentity version="9.0.0.0" processorArchitecture="x86" name="manaosdiablo-launcher.exe" type="win64" />
+	<assemblyIdentity version="9.0.0.0" processorArchitecture="x86" name="hiddengamersdiablo-launcher.exe" type="win64" />
 	<description>
-		ManaosDiablo launcher is a Diablo II laucher for the community ManaosDiablo
+		HiddenGamers Diablo launcher is a Diablo II laucher for the community HiddenGamers Diablo
 	</description>
 	<trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
 		<security>
